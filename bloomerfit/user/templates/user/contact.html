@@ -1,0 +1,87 @@
+{% extends "user/base.html" %}
+{% load static %}
+{% block title %} Contact Us {% endblock %}
+
+{% block body %}
+
+
+<div class="container">
+    &nbsp;&nbsp;
+    {% if messages %}
+        {% for message in messages %}
+        <h3 style="color:blue" {% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</h3>
+        {% endfor %}
+    {% endif %}
+    &nbsp;&nbsp;
+    <h3>Contact Us:</h3>
+    <form action="{% url 'user:contact' %}" method="post" style="border-style: outset; padding-top: 20px; padding: 15px; border-radius: 10px;">
+        {% csrf_token %}
+        <div class="form-group">
+            {{ form.author }} &nbsp;&nbsp; {{ form.email }}
+        </div>
+        <div class="form-group">
+            &nbsp;&nbsp;
+            {{ form.body }}
+        </div>
+        <br>
+        <button type="submit" class="btn btn-primary">Submit</button>
+    </form> 
+    <br><br><br>
+    <p style="text-align: center;">
+                       
+        <span><i class="fas fa-phone">&nbsp; +234-703 106 6645</i></span>
+        or
+        <a href="mailto:dcommandos5@gmail.com"><span><i class="fas fa-envelope">&nbsp;chionyetonyjays@gmail.com</i></span></a>   
+    </p>
+        
+<h3 style="text-align: center;">Our Social Media handles:</h3>
+<p>
+    <div class="container mt-5 mb-5 d-flex justify-content-center">
+        <ul class="social-list">
+            <li>
+                <div class="maincard p-3">
+                    <div class="thecard">
+                        <div class="thefront text-center py-4 facebook">
+                            <div class="social-icon"> <a href="https://www.facebook.com/Bloomer-Fit-100462422525632"><i class="fa fa-facebook fa-2x"></i> </a></div>
+                        </div>
+                        <div class="theback py-3 px-3 text-center facebook">
+                            <div class="social-text mt-1"> <small class="font-weight-bold">Facebook</small> </div>
+                        </div>
+                    </div>
+                </div>
+            </li>
+            <li>
+                <div class="maincard p-3">
+                    <div class="thecard">
+                        <div class="thefront text-center py-4 instagram">
+                            <div class="social-icon"> <a href="https://www.instagram.com/bloomerfit/"><i class="fa fa-instagram fa-2x"></i></a> </div>
+                        </div>
+                        <div class="theback py-3 px-3 text-center instagram">
+                            <div class="social-text mt-1"> <small class="font-weight-bold">Instagram</small> </div>
+                        </div>
+                    </div>
+                </div>
+            </li>
+           
+            <li>
+                <div class="maincard p-3">
+                    <div class="thecard">
+                        <div class="thefront text-center py-4 whatsapp">
+                            <div class="social-icon"><a href="https://api.whatsapp.com/send?phone=2347031066645"> <i class="fa fa-whatsapp fa-2x"></i></a> </div>
+                        </div>
+                        <div class="theback py-3 px-3 text-center whatsapp">
+                            <div class="social-text mt-1"> <small class="font-weight-bold">Whatsapp</small> </div>
+                        </div>
+                    </div>
+                </div>
+            </li>
+            
+            
+        </ul>
+    </div> 
+</p>
+  
+</div>
+
+
+{% endblock %}

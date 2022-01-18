@@ -1,0 +1,32 @@
+{% extends 'user/base.html' %}
+{% load crispy_forms_tags %}
+{% block title %}bloomerfit |Weight Tracker{% endblock %}
+
+{% block body %} 
+<div class="container">
+    <p>
+      {% if messages %}
+      <ul class="messages">
+          {% for message in messages %}
+            <h3 style="color:red"><li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li></h3> 
+          {% endfor %}
+      </ul>
+      {% endif %}
+        current weight(kg): {{weight}}
+        <form action="{% url 'user:weight_tracker' %}" method="POST" style="border: 2px solid blue; padding: 20px;">
+          {% csrf_token %}
+            {{form}}
+            <div style="margin: 10px;"><button class="btn btn-success" type="submit">Submit</button></div>
+        </form>
+        <br>
+        {% if  weight > desired_weight and desired_weight >= weightShouldBe_one  %}
+         <div style="background-color: blue; color: white; text-align: center; padding:10px">
+           You should reach the target in {{ min_time_to_get_result_days }} days, given proper adherence to our weight-loss plan. {% if min_month and days_left %} That's about {{ min_month }} month(s), {{days_left}} day(s). {% endif %}
+         </div>
+        {% endif %}
+        
+        <a href="{% url 'user:weight_tracker' %}">refresh</a>  
+      </p>
+</div>
+  
+{% endblock %}

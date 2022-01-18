@@ -1,0 +1,40 @@
+{% extends "user/base.html" %}
+{% load crispy_forms_tags %}
+{% block title %} Profile Update {% endblock %}
+
+{% block body %}
+<style>
+    input{
+        margin: 5px
+    }
+</style>
+<div class="container py-5">	
+  <h2>Please Update Your Profile</h2>
+ 
+  <form action="{% url 'user:profile' %}" method="POST">
+      {% csrf_token %}
+      <div class="fieldWrapper">
+          {{ form.weight.errors }}
+          <label for="{{ form.weight.id_for_label }}">Weight(Kg):</label>&nbsp;&nbsp;&nbsp;
+          <input id="weight" type="text" name="weight" value="{{ weight }}">   
+      </div>
+      <div class="fieldWrapper">
+          {{ form.height.errors }}
+          <label for="{{ form.height.id_for_label }}">Height(m):</label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+          <input id="height" type="text" name="height" value="{{ height }}">
+      </div>
+      <div class="fieldWrapper">
+          {{ form.waist.errors }}
+          <label for="{{ form.waist.id_for_label }}">Waist(inches):</label>
+          <input id="waist" type="text" name="waist" value="{{ waist }}">
+      </div>
+      <div class="fieldWrapper">
+          {{ form.hips.errors }}
+          <label for="{{ form.hips.id_for_label }}">Hips(inches):</label>&nbsp;&nbsp;
+          <input id="hips" type="text" name="hips" value="{{ hips }}">
+      </div>
+          <br> <button class="btn btn-primary" type="submit">Submit</button>
+  </form>
+</div>
+{% endblock %}
+

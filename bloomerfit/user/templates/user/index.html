@@ -1,0 +1,155 @@
+{% extends 'user/base.html' %}
+{% load static %}
+{% block title %} Homepage | bloomerfit {% endblock %}
+
+{% block body %}
+<style>
+  /* Special buttons and index div decoration */
+    .navibutton{
+       border:2px solid white;
+       padding: 10px;
+       color:white;
+       background-color: cornflowerblue;
+    }
+    .navibutton:hover{
+       padding: 10px;
+       color:white;
+       background-color: rgb(181, 204, 245);
+    }
+    .navbutton:hover{
+      transition: 0.5s;
+      transform: scale(1.1);
+    } 
+    .navi{
+       padding: 10px;
+       color:rgb(8, 8, 247);
+       background-color: white;
+       border: 2px solid blue;
+    }
+    .navi:hover{
+       padding: 10px;
+       color:rgb(10, 10, 250);
+       background-color: rgb(181, 204, 245);
+    }
+    @media (max-width: 450px) {
+    .myimg {
+      width: 100vw;
+    }
+  }
+  @media (max-width: 450px) {
+    .my_video {
+      width: 100vw;
+    }
+  }
+  #mydiv {
+    background-image: url("{% static 'user/images/workoutFemales.jpg' %}");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+  }
+  .myimg{
+    width:96%
+  }
+  </style>  
+  
+    <div class = "container-fluid" style="background-color: rgb(6, 73, 196); padding: 20px;">
+            <br><br>
+            <div class="container">
+              <div class="row">
+                  <div class="col-md-8" style="padding: 10px">
+                    <h1 style="color:white">Who we are</h1>
+                    <p style="color:white">Our physical and mental well-being is an integral part of our lives. We will never be able to attain the height of our overall achievement if we were in a poor state of health &ndash; be that physically, mentally, psycologically, emotionally or otherwise. Bloomerfit is a site with the mandate of bringing you important information geared towards helping you stay in your optimal state of health. 
+                    </p>
+                    <a href = "{% url 'user:contact' %}"><button class="navibutton">Contact Us</button></a>
+                  </div>
+                  <div class="col-md-4">
+                    <img src = "{% static 'user/images/dwayne_workout.jpg' %}" title="The Rock working out"  style="width:100%; height: 280px; margin: 10px 10px 10px 10px; border: 2px solid blue">
+                  </div>
+              </div>
+              <div class="row">
+                <div class="col-md-3 navbutton">
+                  <a class="navbutton" href="#"><button style="padding: 15px; width: 100%; height: 70px; border: 0; color: white; font-size: larger; background-color: rgb(212, 212, 130); margin: 15px;">Blog</button></a>
+                </div>
+                <div class="col-md-3 navbutton">
+                  <a class="navbutton" href="{% url 'user:login' %}"><button style="padding: 15px; width: 100%; height: 70px; border: 0; color: white;font-size: larger; background-color: red; margin: 15px;">Member Login</button></a>
+                </div>
+                <div class="col-md-3 navbutton">
+                  <a class="navbutton"  href="{% url 'user:fitnessMeter' %}"><button style="padding: 15px; width: 100%; height: 70px; border: 0; color: white;font-size: larger; background-color: yellowgreen; margin: 15px;">Fitness Meter</button></a>
+                </div>
+                <div class="col-md-3 navbutton">
+                  <a class="navbutton" href="{% url 'user:signup' %}"><button style="padding: 15px; width: 100%;height: 70px; border: 0; color: white;font-size: larger;background-color: rgb(255, 0, 157);margin: 15px;">Join Us</button></a>
+                </div>
+              </div>
+             
+            </div>
+            
+    </div>
+    
+    <div id="mydiv"  class="container-fluid" style="padding: 20px" >
+    
+      <div class="container" style="margin:0 auto;">
+        <div class="row" style="border:0px; opacity: 0.8; background-color: white;padding:15px">
+          
+            <div class="col-md-4" style="padding:20px">
+              <div style="display: block; margin: 10px"><a href = "{% url 'user:signup' %}"><button class="navi">Sign Up</button></a></div>
+              <div style="display: block; margin: 10px"><a href = "#"><button class="navi">Our Latest Posts</button></a></div>
+            </div>
+            <div class="col-md-8" style="padding: 10px;">
+              <h1 style="color:blue">What we do</h1>
+              <p>
+                Through regular blog posts of work out sessions; health and beauty tips as well as healthy meal suggestions, we aim at improving your all-round health level so you can be properly equipped with all it takes to achieve your goals. Sign up with us now let's attend to your needs on a personal level.
+              </p>
+              <p>
+                Whether you are a student in college, hoping to optimize those grades; or you're an aspiring  beauty queen wishing to build your social media fan base; or an executive trying to maximize your output and place your company on a perpetual growth trajectory, you need to be at your best shape healthwise to achieve those lofty heights. And that is where BloomerFit comes in. We've got you covered!
+              </p>
+            </div>  
+        </div>
+      </div>
+    </div>
+    <br>
+    <div class="container" style="border-style: outset; padding: 10px;">
+      <div class="row">
+        <div class="col-md-6">
+          <img class="myimg" src = "{% static 'user/images/weight_loss_curve.jpg' %}" alt = "The Weight Loss Curve">
+      
+          <p style = "text-align: center">Image <a href = "https://www.hindawi.com/journals/jobe/2011/360257/">source</a></p>
+        </div>
+        <div class="col-md-6"  style="padding: 20px">
+          <p>
+            Now much as exercise is important for our well-being, diet is even more important. As the cliche goes "...you are what you eat". Studies have shown
+            as depicted by the graph, that the effect of proper diet on weight control is only bettered by a combination of diet and exercise.
+          </p>
+        </div>
+        
+       </div>
+    </div>
+        
+<div class="container-fluid">
+  <p style="text-align: center">Check out these work out videos</p>
+          <div class="row">
+                <div class="col-md-4">
+                  <iframe style="width:100%; margin: 10px; height:345px" frameborder="0" src="https://www.youtube.com/embed/_SC0T5nvTLo"></iframe>
+                      <p>Here is a fitness motivation from Serena Williams, follow her <a href="https://www.instagram.com/serenawilliams/"> <i class="fab fa-instagram"></i></a></p>
+                </div>
+                <div class="col-md-4">
+                  <iframe style="width:100%; margin: 10px; height:345px" frameborder="0" src="https://www.youtube.com/embed/zcOsz-dHFe0"></iframe>
+                      <p>Here are some healthy food choices, courtesy of tasty <a href="https://www.instagram.com/buzzfeedtasty/"> <i class="fab fa-instagram"></i></a></p>
+                </div>
+                <div class="col-md-4">
+                  <iframe style="width:100%; margin: 10px; height:345px" frameborder="0" src="https://www.youtube.com/embed/oKyKZicdNiI"></iframe>
+                      <p>And more fitness motivation from Kevin Hart, follow him <a href="https://www.instagram.com/kevinhart4real/"> <i class="fab fa-instagram"></i></a> </p>
+                </div>
+          </div>
+</div>
+        
+<div class="container">
+
+            <h3 style = "text-align: center; color: blue">The following foods are very effective in keeping the weight under check</h3>
+            <p style = "text-align: center; color: blue">
+                Whole eggs<br>Salmon<br>Leafy green<br>Beans and legumes<br>Lean beaf and chicken breast <br>Boiled potatoes<br>Tuna<br>Avocadoes<br>Apple Cider Vineger<br>Nuts<br>
+                Whole grains<br>Chili pepper<br>Fruits<br>Coconut oil...<br>
+                <a href = "https://www.healthline.com/nutrition/20-most-weight-loss-friendly-foods#TOC_TITLE_HDR_20">source</a>
+            </p>
+</div>
+
+{% endblock %}

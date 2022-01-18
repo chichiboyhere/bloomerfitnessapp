@@ -1,0 +1,25 @@
+{% extends "user/base.html" %}
+{% load crispy_forms_tags %}
+ {% block title %}
+ Converter
+ {% endblock %}
+ {% block body %}
+ <div class="container">
+    <h1 style="background-color: cornflowerblue; color: white; padding:5px; border-radius: 10px; text-align: center;">Metric Converter</h1>
+    <form method="POST" action="{% url 'user:metric_converter' %}" style="border: 1px solid blue; background-color: skyblue; padding: 15px;">
+        {% csrf_token %}
+        <div class="form-group">
+            {{ weight_form|crispy }}
+        </div>
+        <div><br><button class="btn btn-success" type="submit">Convert to Kilogram</button></div>
+    </form>
+    {% if weight %}
+        Weight = {{ weight }} Kg
+    {% endif %}
+    
+    <div style="text-align: center;"><a href="{% url 'user:m_converter' %}">Back to Metric Converter Menu page</a> </div>
+    <div style="text-align: center;"><a href="{% url 'user:signup' %}">Back to sign up page</a> </div>
+ </div>
+
+ 
+ {% endblock %}

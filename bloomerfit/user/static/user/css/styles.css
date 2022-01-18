@@ -1,0 +1,368 @@
+
+    /*Contact Cards*/
+
+    .masthead {
+      background: #3398e1;
+      height: auto;
+      padding-bottom: 15px;
+      box-shadow: 0 16px 48px #e3e7eb;
+      padding-top: 10px;
+    }
+    .social-list {
+      display: inline-flex;
+    }
+    
+    .social-list li {
+      list-style: none;
+      margin-right: 10px;
+    }
+    
+    .maincard {
+      position: relative;
+      width: 80px;
+      height: 80px;
+    }
+    
+    .thecard {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      transform-style: preserve-3d;
+      transition: all 0.8s ease;
+    }
+    
+    .thecard:hover {
+      transform: rotateY(180deg);
+    }
+    .thefront {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      background-color: hidden;
+      color: #fff;
+      border-radius: 10px;
+      cursor: pointer;
+      border: 1px solid #eee;
+      box-shadow: 5px 6px 6px 2px #e9ecef;
+      padding: 2px;
+    }
+    
+    .theback {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      cursor: pointer;
+      background-color: hidden;
+      color: #fff;
+      border-radius: 10px;
+      transform: rotateY(180deg);
+      border: 1px solid #eee;
+      box-shadow: 5px 6px 6px 2px #e9ecef;
+      padding: 2px;
+    }
+    
+    .social-text small {
+      font-size: 10px;
+      text-align: center;
+    }
+    
+    @media (max-width: 700px) {
+      .social-list {
+        display: block;
+      }
+    }
+    
+    .facebook {
+      background: #3b5998;
+    }
+    
+    .instagram {
+      background: #9b3f5e;
+    }
+    
+    .linkedin {
+      background: #0000ef;
+    }
+    
+    .whatsapp {
+      background: #4dc247;
+    }
+  /* Special buttons and index div decoration */
+  .navibutton{
+     border:2px solid white;
+     padding: 10px;
+     color:white;
+     background-color: cornflowerblue;
+  }
+  .navibutton:hover{
+     padding: 10px;
+     color:white;
+     background-color: rgb(181, 204, 245);
+  }
+  .navbutton:hover{
+    transition: 0.5s;
+    transform: scale(1.1);
+  } 
+  .navi{
+     padding: 10px;
+     color:rgb(8, 8, 247);
+     background-color: white;
+     border: 2px solid blue;
+  }
+  .navi:hover{
+     padding: 10px;
+     color:rgb(10, 10, 250);
+     background-color: rgb(181, 204, 245);
+  }
+  @media (max-width: 450px) {
+  .myimg {
+    width: 100vw;
+  }
+}
+@media (max-width: 450px) {
+  .my_video {
+    width: 100vw;
+  }
+}
+#mydiv {
+	background-image: url("{% static 'images/workoutFemales.jpg' %}");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+}
+.myimg{
+  width:96%
+}
+
+/* Footer */
+
+footer {
+    background: #16222a;
+    background: -webkit-linear-gradient(59deg, #3a6073, #16222a);
+    background: linear-gradient(59deg, #3a6073, #16222a);
+    color: white;
+    margin-top: 100px;
+  }
+  
+  footer a {
+    color: #fff;
+    font-size: 14px;
+    transition-duration: 0.2s;
+  }
+  
+  footer a:hover {
+    color: #fa944b;
+    text-decoration: none;
+  }
+  
+  .copy {
+    font-size: 12px;
+    padding: 10px;
+    border-top: 1px solid #ffffff;
+  }
+  
+  .footer-middle {
+    padding-top: 2em;
+    color: white;
+  }
+  
+  /* footer social icons */
+  
+  ul.social-network {
+    list-style: none;
+    display: inline;
+    margin-left: 0 !important;
+    padding: 0;
+  }
+  
+  ul.social-network li {
+    display: inline;
+    margin: 0 5px;
+  }
+  
+  /* footer social icons */
+  
+  .social-network a.icoFacebook:hover {
+    background-color: #0e4dd4;
+  }
+  .fa-fw {
+    width: 360px;
+    margin: 10px;
+  }
+  
+  .social-network a.icoInstagram:hover {
+    background-color: #ff0000;
+  }
+  .social-network a.icoTwitter:hover {
+    background-color: #1da1f2;
+  }
+  .social-network a.icoWhatsapp:hover {
+    background-color: #4fce5d;
+  }
+  
+  .social-network a.icoFacebook:hover i,
+  .social-network a.icoInstagram:hover i,
+  .social-network a.icoTwitter:hover i,
+  .social-network a.icoWhatsapp:hover i {
+    color: #fff;
+  }
+  
+  .social-network a.socialIcon:hover,
+  .socialHoverClass {
+    color: #44bcdd;
+  }
+  
+  .social-circle li a {
+    display: inline-block;
+    position: relative;
+    margin: 0 auto 0 auto;
+    -moz-border-radius: 50%;
+    -webkit-border-radius: 50%;
+    border-radius: 50%;
+    text-align: center;
+    width: 30px;
+    height: 30px;
+    font-size: 15px;
+  }
+  
+  .social-circle li i {
+    margin: 0;
+    line-height: 30px;
+    text-align: center;
+  }
+  
+  .social-circle li a:hover i,
+  .triggeredHover {
+    -moz-transform: rotate(360deg);
+    -webkit-transform: rotate(360deg);
+    -ms--transform: rotate(360deg);
+    transform: rotate(360deg);
+    -webkit-transition: all 0.2s;
+    -moz-transition: all 0.2s;
+    -o-transition: all 0.2s;
+    -ms-transition: all 0.2s;
+    transition: all 0.2s;
+  }
+  
+  .social-circle i {
+    color: #595959;
+    -webkit-transition: all 0.8s;
+    -moz-transition: all 0.8s;
+    -o-transition: all 0.8s;
+    -ms-transition: all 0.8s;
+    transition: all 0.8s;
+  }
+  
+  .social-network a {
+    background-color: #f9f9f9;
+  }
+
+  /** video size */
+  @media (max-width: 450px) {
+    .my_video {
+      width: 100vw;
+    }
+  }
+/* Special container div with well-padded paragraphs */
+.container1 > p {
+  padding-top: 5%;
+  padding-right: 12%;
+  padding-left: 12%;
+  font-size: large;
+}
+.container1 {
+  padding: 20px;
+  text-align: center;
+  color: white;
+  background-color: rgb(2, 2, 58);
+  border: 45px solid cyan;
+  border-top: 0px;
+}
+  /*Contact Cards*/
+
+  .masthead {
+    background: #3398e1;
+    height: auto;
+    padding-bottom: 15px;
+    box-shadow: 0 16px 48px #e3e7eb;
+    padding-top: 10px;
+  }
+  .social-list {
+    display: inline-flex;
+  }
+  
+  .social-list li {
+    list-style: none;
+    margin-right: 10px;
+  }
+  
+  .maincard {
+    position: relative;
+    width: 80px;
+    height: 80px;
+  }
+  
+  .thecard {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    transform-style: preserve-3d;
+    transition: all 0.8s ease;
+  }
+  
+  .thecard:hover {
+    transform: rotateY(180deg);
+  }
+  .thefront {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-color: hidden;
+    color: #fff;
+    border-radius: 10px;
+    cursor: pointer;
+    border: 1px solid #eee;
+    box-shadow: 5px 6px 6px 2px #e9ecef;
+    padding: 2px;
+  }
+  
+  .theback {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    cursor: pointer;
+    background-color: hidden;
+    color: #fff;
+    border-radius: 10px;
+    transform: rotateY(180deg);
+    border: 1px solid #eee;
+    box-shadow: 5px 6px 6px 2px #e9ecef;
+    padding: 2px;
+  }
+  
+  .social-text small {
+    font-size: 10px;
+    text-align: center;
+  }
+  
+  @media (max-width: 700px) {
+    .social-list {
+      display: block;
+    }
+  }
+  
+  .facebook {
+    background: #3b5998;
+  }
+  
+  .instagram {
+    background: #3f729b;
+  }
+  
+  .linkedin {
+    background: #0000ef;
+  }
+  
+  .whatsapp {
+    background: #4dc247;
+  }

@@ -1,0 +1,359 @@
+{% extends "user/base.html" %}
+{% load static %}
+
+{% block title %}
+  Fitness Result
+{% endblock %}
+
+{% block body %} 
+  
+
+   <div class="container">
+       <p style= "text-align: center"><h2 style = "color: blue">Hello {{name}}, your BMI is {{bmi}}, while your WHR is {{whr}}</h2></p>
+	   
+    <!--If the user is female...-->    
+    {% if gender == "female" %}
+		<!--Case 1: Very high WHR, very high BMI-->
+		{% if whr > 0.85 and bmi >= 30 %}
+		    <div class="row">
+				<div class="col-md-6" style="padding: 30px;">
+					You are obese. You need a weight trim, particularly around the waist. You should get your weight down to between {{weightShouldBe_one}} kg
+					and {{weightShouldBe_two}} kg. Your body type should match that of Erica Lugo before she lost a massive 150 pounds(68 Kg) of body mass to assume an attractive
+					fit physique.
+			    </div>
+				<div class="col-md-6">
+                    <img src = "{% static 'user/images/ericaLugo.jpg' %}"  alt = "erica Lugo" style="width:100%; margin: 5px">
+				    <p style = "text-align: center">Erica Lugo, before and after, follow her <a href="https://www.instagram.com/ericafitlove/channel/"> <i class="fab fa-instagram"></i></a></p>
+				</div>
+		    </div>
+			<div class="row">
+				<h3 style = "color: green; text-align: center">What to do?</h3>
+				<p style = "text-align: center">Well for starters, let's try and get you to shed {{min_weight_loss}} kg. You can subscribe to our free 3 month weight loss
+				<a href = "{% url 'user:signup' %}">program.</a></p>
+			</div>
+				
+        <!--Case 2: High WHR, high BMI-->
+        {% elif whr >= 0.85 and bmi > 24 and bmi < 30 %}
+		        
+					<div class="row" style="padding: 20px;">
+						You are overweight by {{min_weight_loss}} Kg. Your body type should match one of these stars' weight before they embarked on an impressive weight loss journey.
+				        One is Jennifer Hudson, an actress, who lost 80 pounds (36.3 Kg)  to earn an attractive physique. Adele, a British musician, also lost 50 pounds (22.7 Kg) to assume
+				        an attractive physique. Check out their pictures below.
+					</div>
+					<div class="row">
+						<div class="col-md-6">
+                            <img src = "{% static 'user/images/jennifer_hudson.jpg' %}" alt = "Jennifer Hudson" style="width:100%; margin: 5px">
+							<p style = "text-align: center">Jennifer Hudson, before and after, follow her <a href="https://www.instagram.com/iamjhud/"> <i class="fab fa-instagram"></i></a></p>
+						</div>
+						<div class="col-md-6">
+                            <img src ="{% static 'user/images/adele.jpg' %}" alt = "Adele" style="width:100%; margin: 5px">
+							<p style = "text-align: center">Adele, before and after, follow her <a href="https://www.instagram.com/adele/"> <i class="fab fa-instagram"></i></a></p>
+						</div>
+					</div>
+					<div class="row">
+						<h3 style = "color: green; text-align: center">What to do?</h3>
+					    <p style = "text-align: center"><a href = "{% url 'user:signup' %}">Sign up</a> with us to achieve your weight loss goal.</p>
+					</div>
+					
+        <!--Case 3: Moderate WHR, high BMI-->		
+		{% elif  whr < 0.85 and whr >= 0.71  and bmi < 30 and bmi > 24 %}
+		<div class="row"> 
+			<div class="col-md-6" style="padding: 30px;"> 
+				 You need a slight weight loss, particularly around the waist. Your body type should match that of Jessica Simpson. The following pictures of her is testimony
+				 to the fact that you can achieve a disireable physique, given the right conditions
+			 </div> 
+			 <div class="col-md-6">
+				 <img src = "{% static 'user/images/jessicaSimpson.jpg' %}" alt = "over-weight" style="width:100%; margin: 5px">
+				 <p style = "text-align: center">Jessica weight loss transformation, follow her <a href="https://www.instagram.com/jessicasimpson/"> <i class="fab fa-instagram"></i></a></p>
+			 </div>
+		</div>
+		 <div class="row">
+			 <h3 style = "color: green; text-align: center">What to do?</h3>
+			 <p style = "text-align: center"><a href = "{% url 'user:signup' %}">Sign up</a> with us to achieve your great physique goals.</p>
+		 </div>
+		
+				
+        <!--Case 4: Moderate WHR, good BMI-->
+        {% elif whr < 0.85  and whr >= 0.7  and bmi <= 24 %}
+		    
+                 <div class="row" style="padding: 30px;">
+					Your stats are good. Keep up a healthy lifestyle! Your body type should match that of singers Madonna or Nicole Scherzinger.
+				 </div>
+				<div class="row">
+					<div class="col-md-6">
+						<img src = "{% static 'user/images/mado.jpg' %}" alt = "Madonna" style="width:100%; margin: 5px">
+						<p style = "text-align: center">Madonna, follow her <a href="https://www.instagram.com/madonna/"> <i class="fab fa-instagram"></i></a></p>
+					</div>
+					<div class="col-md-6">
+						<img src = "{% static 'user/images/nicoleScherzinger.jpg' %}" alt = "Nicole Scherzinger" style="width:100%; margin: 5px">
+						<p style = "text-align: center">Nicole Scherzinger, follow her <a href="https://www.instagram.com/nicolescherzinger/"> <i class="fab fa-instagram"></i></a></p>
+					</div>
+				</div>
+				<div class="row">
+					<h3 style = "color: green; text-align: center">What to do?</h3>
+				    <p style = "text-align: center"> If there's anything better than being in shape, it is staying in shape.<a href = "{% url 'user:signup' %}">Sign up</a> with us, and together
+				     we shall ensure you stay in shape.</p>
+				</div>
+        <!--Case 5: Good WHR, good BMI-->
+		{% elif whr < 0.7 and bmi <= 24 %}
+		<div class="row" style="padding: 30px">
+			You've got a great physique. Keep up a healthy lifestyle. Your body type should match one of these ultra sexy ladies.
+		</div>
+		<div class="row">
+			<div class="col-md-4">
+				<img src = "{% static 'user/images/rihanna.jpg' %}" alt = "Rihanna" style="width:100%; margin: 5px">
+				<p style = "text-align: center">Rihanna, follow her <a href="https://www.instagram.com/badgalriri/"> <i class="fab fa-instagram"></i></a></p>
+			</div>
+			<div class="col-md-4">
+				<img src = "{% static 'user/images/jelo.jpg' %}" alt = "Jennifer Lopez" style="width:100%; margin: 5px">
+				<p style = "text-align: center">Jennifer Lopez, follow her <a href="https://www.instagram.com/jlo/"> <i class="fab fa-instagram"></i></a></p>
+			</div>
+			<div class="col-md-4">
+				<img src = "{% static 'user/images/beyonce.jpg' %}" alt = "Beyonce" style="width:100%; margin: 5px">
+				<p style = "text-align: center">Beyonce, follow her <a href="https://www.instagram.com/beyonce/"> <i class="fab fa-instagram"></i></a></p>
+			</div>
+		</div>
+		<div class="row">
+			<h3 style = "color: green; text-align: center">What to do?</h3>
+			<p style = "text-align: center"> 
+				If there's anything better than being in shape, it is staying in shape.<a href = "/subscribe"> Sign up</a> with us, and together we shall ensure you stay in shape.
+		    </p>
+		</div>
+        <!--Case 6: Good WHR, high BMI-->
+		{% elif whr <= 0.85 and whr >= 0.7  and bmi > 23  %}
+		<div class="row" style="padding: 30px;">
+			 You've got a good, strong physique. Keep up a healthy lifestyle. You problaby are an athlete, a body builder or a fitness enthusiast. Your physique is likely to
+			 match that of Wioletta Pawluk or Serena Williams.
+		</div>
+		<div class="row">
+			 <div class="col-md-6">
+				 <img src = "{% static 'user/images/wiolettaPawluk.jpeg' %}" alt = "Wioletta Paluk" style="width:100%; margin: 5px">
+				 <p style = "text-align: center">Wioletta Pawluk, follow her <a href="https://www.instagram.com/wioletta_pawluk/"> <i class="fab fa-instagram"></i></a></p>
+			 </div>
+			 <div class="col-md-6">
+				 <img src = "{% static 'user/images/serena_will.jpg' %}" alt = "Serena Williams" style="width:100%; margin: 5px">
+				 <p style = "text-align: center">Serena Williams, follow her <a href="https://www.instagram.com/serenawilliams/"> <i class="fab fa-instagram"></i></a></p>
+			 </div>
+			 <p style = "text-align: center">Sexy fit chic! </p> 
+		</div>
+		<div class="row">
+			 <h3 style = "color: green; text-align: center">What to do?</h3>
+			 <p style = "text-align: center"> If there's anything better than being in shape, it is staying in shape.<a href = "/subscribe"> Sign up</a> with us, and together
+			 we shall ensure you stay in shape.</p>
+		</div>	      
+		<!--Case 7: Low WHR, high BMI-->	 
+		{% elif whr < 0.7 and bmi > 24 %}
+				   <div class="row" style="padding: 30px">
+					Mmm.... You're a quintessential bootiliciuos queen. Keep up your healthy lifestyle.
+					Your body type should be any of the following.
+				   </div>
+				   <div class="row">
+					   <div class="col-md-6">
+						   <img src = "{% static 'user/images/peaceHyde.jpg' %}" alt = "Peace Hyde" style="width:100%; margin: 5px">
+						   <p style = "text-align: center">Peace Hyde, follow her <a href="https://www.instagram.com/peac_hy/"> <i class="fab fa-instagram"></i></a></p>
+					   </div>
+					   <div class="col-md-6">
+						
+						  <img src = "{% static 'user/images/lita_mali.jpg' %}" alt = "Lita Mali" style="width:100%; margin: 5px">
+						   <p style = "text-align: center">Lita Mali, follow her <a href="https://www.instagram.com/lita.mali/"> <i class="fab fa-instagram"></i></a></p>
+					   </div>
+					   <div><p style = "text-align: center">Killer curves, queen!</p></div>
+				   </div>
+				   <div class="row">
+					   <h3 style = "color: green; text-align: center">What to do?</h3>
+					   <p style = "text-align: center"> If there's anything better than being in shape, it is staying in shape.<a href = "{% url 'user:signup' %}"> Sign up</a> with us, and together
+					   we shall ensure you stay in shape.</p>
+				   </div>
+			   
+				
+		<!--Case 8: Moderate WHR, low BMI-->
+		{% elif whr <= 0.9 and whr > 0.85 and bmi < 19 %}
+		        <div class="row">
+					<div class="col-md-6" style="padding: 30px;">
+						You are underweight. You need to gain some muscles. Your body type could match that of body builder Nataliya Kuznetsova before she went into body-building.
+						Now, while you might not be considering reaching the intimidating heights attained by this amazing woman in terms of muscle gain, you can at least draw inspiration
+						from her transformation. Add some flesh in a healthy way through exercise and good diet.
+					</div>
+					<div class="col-md-6">
+                        <img src = "{% static 'user/images/nataliyaKuznetsova.jpg' %}" alt = "Nataliya Kuznetsova" style="width:100%;margin:5px">
+						<p style = "text-align: center">Nataliya Kuznetsova before and after, follow her <a href="https://www.instagram.com/nataliya.amazonka/"> <i class="fab fa-instagram"></i></a> </p>
+					</div>
+				</div>
+				
+				<div class="row">
+                    <h3 style = "color: green; text-align: center">What to do?</h3>
+					<p style = "text-align: center"><a href = "{% url 'user:signup' %}">Sign up</a> with us for tips on how to bulk up and gain healthy weight.</p>
+				</div>
+				
+	     <!--Default case-->
+         {% else %}
+		       <h3 style = "color: green; text-align: center">What to do?</h3>
+				<p style = "text-align: center">You can subscribe to our free 3 month weight fitness
+				<a href = "{% url 'user:signup' %}">program.</a></p>   
+		 {% endif %}
+    {% endif %}
+    <!--If the user is a male...-->
+	{% if gender == "male" %}
+            <!--Case 1: Very high WHR, very high BMI-->
+		    {% if whr > 0.9 and bmi >= 30 %}
+			   
+					<div class="row">
+						You are obese. You should get your weight down to at least {{weightShouldBe_two}} kg.
+						Your body type should fit that of actor Ethan Suplee before he shed off a massive 250 pounds(113.5Kg) of weight. A radical change of lifestyle is to be credited for his transformation.
+				    </div>
+					<div class="row">
+						<div class="col-md-6">
+                            <!--<img src = "{% static 'user/images/ethan.jpg' %}" alt = "Over weight Ethan Suplee"  style="width:100%;margin:5px">-->
+
+							<img src = "{% static 'https://www.instagram.com/p/Bxu2PcmJ_pt/' %}" alt = "Over weight Ethan Suplee"  style="width:100%;margin:5px">
+							<p style = "text-align: center">Ethan Suplee (before)</p>
+						</div>
+						<div class="col-md-6">
+                            <img src = "{% static 'user/images/fitEthanSuplee.jpg' %}" alt = "Fit Ethan Suplee"  style="width:100%;margin:5px">
+							<p style = "text-align: center">Ethan Suplee (after)</p>
+						</div>
+						
+					<p style = "text-align: center">Follow him <a href="https://www.instagram.com/ethansuplee/"> <i class="fab fa-instagram"></i></a></p>
+					</div>
+					<div class="row">
+						<h3 style = "color: green; text-align: center">What to do?</h3>
+		                <p style = "text-align: center">Well for starters, let's try and get you to shed {{min_weight_loss}} kg. You can subscribe to our free 3 month weight loss
+		                <a href = "{% url 'user:signup' %}">program.</a></p>
+					</div>
+				
+		        
+
+            <!--Case 2: High WHR, high BMI-->
+			{% elif whr > 0.9 and bmi > 24 and bmi < 30 %}
+			    
+					<div class="row" style="padding:30px">
+						You are overweight. Your should trim down your weight, particularly around the waist. Your body type could fit that of Vinny Guadagnino, a reality television
+						personality before he lost weight and got quite fit as the pictures below show.
+					</div>
+					<div class="row" >
+                        <div class="col-md-4" style="width:100%;margin:5px"></div>
+						<div class="col-md-4" style="width:100%;margin:5px">
+							<img src="{% static 'user/images/vinnyGuadagnino.jpg' %}" alt = "Over weight" style="width:100%;margin:5px">
+							<p style = "text-align: center">Vinny Guadagnino (before and after)</p>
+						</div>
+						<div class="col-md-4" style="width:100%;margin:5px"></div>
+						<p style = "text-align: center">Follow him <a href="https://www.instagram.com/vinnyguadagnino/"> <i class="fab fa-instagram"></i></a></p>
+					</div>
+					<div class="row">
+                        <h3 style = "color: green; text-align: center">What to do?</h3>
+                        <p style = "text-align: center"><a href = "{% url 'user:signup' %}">Sign up</a> with us to achieve your weight loss goals.</p>
+					</div>
+			    
+		    <!--Case 3: High WHR, good BMI-->
+		    {% elif whr > 0.9  and bmi >= 19 and bmi <= 24 %}
+			    
+					<div style="padding:30px">
+						You need a weight trim around your waist. Your body type fits that of actor Gerrard Butler before he starred in the movie '300'. A good workout regimen and proper
+		                diet is to be credited for his desireble ab.
+					</div>
+					<div class="row">
+						<div class="col-md-6">
+							<img src = "{% static 'user/images/gerrard.jpg' %}" alt = "Gerrard Butler without ab"style="width:100%;margin:5px">
+							<p style = "text-align: center">Gerrard Butler (before)</p>
+						</div>
+						<div class="col-md-6">
+                            <img src ="{% static 'user/images/gerrardButler300.jpg' %}" alt = "Gerrard Butler with sexy ab" style="width:100%;margin:5px">
+							<p style = "text-align: center">Gerrard Butler (in '300')</p>
+						</div>
+						<p style = "text-align: center">Follow him <a href="https://www.instagram.com/gerardbutler/"> <i class="fab fa-instagram"></i></a></p>
+				    </div> 
+					<div class="row">
+						<h3 style = "color: green; text-align: center">What to do?</h3>
+                        <p style = "text-align: center"><a href = "{% url 'user:signup' %}">Sign up</a> with us to achieve and maintain that sexy ab.</p>
+					</div>
+                
+		         
+            <!--Case 4: Good WHR, good BMI-->
+			{% elif whr <= 0.9 and bmi >= 19 and  bmi <= 24 %}
+			
+				<div class="row" style="padding:30px">
+					Your stats are good. Keep up a healthy lifestyle. Your body type should match that of Joe Wicks or David Beckham.
+				</div>
+				<div class="row">
+					<div class="col-md-6">
+						<img src = "{% static 'user/images/joewicks2.jpg' %}" alt = "Good weight" style="width:100%;margin:5px">
+						<p style = "text-align: center">Joe Wicks, follow him <a href="https://www.instagram.com/thebodycoach/"> <i class="fab fa-instagram"></i></a></p>
+					</div>
+					<div class="col-md-6"> 
+						<img src = "{% static 'user/images/davidBeckham.jpg' %}" alt = "Good weight" style="width:100%;margin:5px">
+						<p style = "text-align: center">David Beckham, follow him <a href="https://www.instagram.com/davidbeckham/"> <i class="fab fa-instagram"></i></a></p>
+					</div>
+				</div> 
+				<div class="row">
+				  <p style="text-align: center">You're a real cool dude!</p>
+			      <h3 style = "color: green; text-align: center">What to do?</h3>
+                  <p style = "text-align: center"><a href = "{% url 'user:signup' %}">Sign up</a> with us to maintain your great physique.</p>
+				</div>
+			
+			    
+
+            <!--Case 5: Good WHR, high BMI-->
+            {% elif whr <= 0.9 and bmi > 24 %}
+			    
+					<div class="row" style="padding:30px">
+						Your stats are great! You're probably an athlete, body builder or a fitness enthusiast. Your body type should match at least one of these strong men:
+			            Ovie Soko, Anthony Joshua or Dwayne Johnson.
+					</div>
+					<div class="row">
+						<div class="col-md-4">
+							<img src = "{% static 'user/images/oviesoko.jpg' %}" alt = "Good weight" style="width:100%;margin:5px">
+							<p style = "text-align: center">Ovie Soko, follow him <a href="https://www.instagram.com/oviesoko/"> <i class="fab fa-instagram"></i></a></p>
+						</div>
+						<div class="col-md-4">
+							<img src ="{% static 'user/images/anthonyjoshua.jpg' %}" alt = "Good weight" style="width:100%;margin:5px">
+							<p style = "text-align: center">Anthony Joshua, follow him <a href="https://www.instagram.com/anthonyjoshua/"> <i class="fab fa-instagram"></i></a></p>
+						</div>
+						<div class="col-md-4">
+							<img src = "{% static 'user/images/droc.jpg' %}" alt = "Good weight" style="width:100%;margin:5px">
+							<p style = "text-align: center">Dwayne Johnson, follow him <a href="https://www.instagram.com/therock/"> <i class="fab fa-instagram"></i></a></p>
+						</div>
+					</div>
+					<div class="row">
+						<p style = "text-align: center">You're a real cool dude!</p>
+			            <h3 style = "color: green; text-align: center">What to do?</h3>
+                        <p style = "text-align: center"><a href = "{% url 'user:signup' %}">Sign up</a> with us to maintain your great physique.</p>
+					</div>
+				
+			    
+            <!--Case 6: Low WHR, low BMI-->
+            {% elif whr <= 0.9 and bmi < 19 %}
+			
+				<div class="row" style="padding:30px">
+					You are underweight. You need to gain some muscles. Your body type could match that of Chritian Bale after he deliberately lost a lot of weight in
+                    order to play an insomniac in the movie 'The Machinist'. A combination of healthy diet eaten regularly, rest and muscle-bulking workouts would get you
+                    where you should be. You could emulate Adrien Brody who, in preparing for a role in the movie 'Predators' bulked up, gaining 25 pounds of muscle mass.
+				</div>
+				<div class="row">
+					<div class="col-md-4">
+						<img src="{% static 'user/images/christianBaleUnderweight.jpg' %}" alt = "light weght" style="width:100%;margin:5px">
+						<p style = "text-align: center">Christian Bale, follow him <a href="https://www.instagram.com/christianbale_/"> <i class="fab fa-instagram"></i></a></p>
+					</div>
+					<div class="col-md-4">
+						<img src = "{% static 'user/images/adrienBrody.jpg' %}" alt = "light weght" style="width:100%;margin:5px">
+						<p style = "text-align: center">Adrien Brody, follow him <a href="https://www.instagram.com/adrienbrody/"> <i class="fab fa-instagram"></i></a></p>
+					</div>
+					<div class="col-md-4">
+						<img src ="{% static 'user/images/adrien.jpg' %}" alt = "light weght" style="width:100%;margin:5px">
+						<p style = "text-align: center">Adrien Brody(in 'Predators')</p>
+					</div>
+				</div>
+				<div class="row">
+					<h3 style = "color: green; text-align: center">What to do?</h3>
+                    <p style = "text-align: center"><a href = "{% url 'user:signup' %}">Sign up</a> with us for tips on how to bulk up and gain healthy weight.</p>
+				</div>
+			
+            <!--Default case-->    
+			{% else %}
+				<h3 style = "color: green; text-align: center">What to do?</h3>
+				<p style = "text-align: center">You can subscribe to our free 3 month weight fitness
+				<a href = "{% url 'user:signup' %}">program.</a></p>   
+   
+			{% endif %}
+	{% endif %}
+</div>
+{% endblock %}

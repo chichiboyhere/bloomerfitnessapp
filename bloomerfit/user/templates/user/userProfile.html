@@ -1,0 +1,34 @@
+{% extends "user/base.html" %}
+
+{% block title %} Profile Page {% endblock %}
+{% block body %} 
+
+<div class="container py-5">
+	<h1>O yea {{request.user.first_name.capitalize}}, your BMI is {{bmi}} and WHR is {{whr}}.</h1>	
+</div>
+<div class="container">
+		<p>Keep track of your body stats as indicated by your recent log-ins:</p>
+		<table class = "table table-striped">
+			<thead>
+				<tr>
+					<th>Weight(Kg)</th>
+					<th>Height(m)</th>
+					<th>Waist(in)</th>
+					<th>Hips(in)</th>
+					<th>Time</th>
+				</tr>
+			</thead>
+			<tbody>
+				{% for user_stat in user_stats %}
+				<tr>
+					<td>{{ user_stat.weight }}</td>
+					<td>{{ user_stat.height }}</td>
+					<td>{{ user_stat.waist}}</td>
+					<td>{{ user_stat.hips}}</td>
+					<td>{{ user_stat.time}}</td>
+				</tr>
+				{% endfor %}
+			</tbody>
+		</table>	
+</div>
+{% endblock %}
