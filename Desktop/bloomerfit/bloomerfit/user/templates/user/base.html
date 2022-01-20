@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+    <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">
+    <script src="https://kit.fontawesome.com/4e8af9895a.js" crossorigin="anonymous"></script>
+    <link rel="shortcut icon" href="{% static 'user/images/bloomer_logox.png' %}" type="image/x-icon"/>
+    <title>{% block title %}{% endblock %}</title>
+    <link href="{% static 'user/css/styles.css' %}" rel="stylesheet">
+    <style>
+      .logo{
+        max-width: 150px;
+      }
+      .mealdropdown:hover{
+       background-color: green;
+       color:white
+      }
+    </style>
+</head>
+<body>
+    
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark navbar-fixed-top">
+        <div class="container-fluid">
+          <a class="navbar-brand" href="{% url 'user:index'  %}"><img src="{% static 'user/images/bloomer_logo2.png' %}" class='logo'></a>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                {% if user.is_authenticated %}
+                        <li class="nav-item"><a class="nav-link active" aria-current="page" href="{% url 'user:logout' %}">Log out</a></li>
+                        <li class="nav-item"><a class="nav-link" href="{% url 'blog:blog_index' %}">Blog</a></li>
+                        <li class="nav-item"><a class="nav-link" href="{% url 'user:fitnessMeter' %}">Fitness meter</a></li>
+                        <li class="nav-item"><a class="nav-link" href="{% url 'user:members' %}">Member</a></li>
+                        <li class="nav-item"><a class="nav-link" href="{% url 'user:contact' %}">Contact</a></li>
+                        <li class="nav-item dropdown">
+                          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            Meal Suggestions
+                          </a>
+                          <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                          <li><a class="dropdown-item mealdropdown" href="https://www.pinterest.ch/foodsfromafrica/foods-from-africa-recipes-from-the-blog/">African</a></li>
+                          <li><hr class="dropdown-divider"></li>
+                          <li><a class="dropdown-item mealdropdown" href="https://myfoodbook.com.au/collections/healthy-asian-recipes">Asian</a></li>
+                          <li><hr class="dropdown-divider"></li>
+                          <li><a class="dropdown-item mealdropdown" href="https://www.eatingwell.com/recipes/18043/ingredients/">European</a></li>
+                          <li><hr class="dropdown-divider"></li>
+                          <li><a class="dropdown-item mealdropdown" href="https://hiplatina.com/healthy-latin-american-recipes/">Latin American</a></li>
+                          <li><hr class="dropdown-divider"></li>
+                          <li><a class="dropdown-item mealdropdown" href="https://lowcarbafrica.com/best-nigerian-foods-for-weight-loss/">Nigerian</a></li>
+                          <li><hr class="dropdown-divider"></li>
+                          <li><a class="dropdown-item mealdropdown" href="https://www.realcaliforniamilk.com/recipes/?occasion=healthier">North American</a></li>
+                          <li><hr class="dropdown-divider"></li>
+                          <li><a class="dropdown-item mealdropdown" href="https://www.wellandgood.com/west-african-food/">West African</a></li>
+                          </ul>
+                      </li>
+                        
+               {% else %}
+                        <li class="nav-item"><a class="nav-link" href="{% url 'blog:blog_index' %}">Blog</a></li>
+                        <li class="nav-item"><a class="nav-link" href="{% url 'user:signup' %}">Sign up</a></li>
+                        <li class="nav-item"><a class="nav-link" href="{% url 'user:login' %}">Log in</a></li>
+                        <li class="nav-item"><a class="nav-link" href="{% url 'user:fitnessMeter' %}" >Fitness meter</a></li>
+                        <li class="nav-item"><a class="nav-link" href="{% url 'user:contact' %}">Contact</a></li> 
+              {% endif %}
+            </ul>
+           
+          </div>
+        </div>
+      </nav>
+    
+        {% block body %}
+        {% endblock %}
+  <!-- Footer -->
+  <footer class="mainfooter" role="contentinfo">
+    <div class="footer-middle">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-3 col-sm-6">
+            <!--Column1-->
+            <div class="footer-pad">
+              <h4>Contact Us</h4>
+              <ul class="list-unstyled">
+                <li><a href="contact.html">Contact Directory</a></li>
+                <li><span><i class="fas fa-phone">&nbsp; +234-7031066645</i></span></li>
+                <li><a href="mailto:dcommandos5@gmail.com"><span><i
+                  class="fas fa-envelope">&nbsp;chionyetonyjays@gmail.com</i></span></a></li>
+                </ul>
+            </div>
+          </div>
+          <div class="col-md-3 col-sm-6">
+            <!--Column2-->
+            <div class="footer-pad">
+              <h4>Extras</h4>
+              <ul class="list-unstyled">
+                <li><a href="#">Disclaimer</a></li>
+                <li><a href="#">Privacy Policy</a></li>
+                <li><a href="mailto:chionyetonyjays@gmail.com">Webmaster</a></li>
+              </ul>
+            </div>
+          </div>
+          <div class="col-md-3 col-sm-6">
+            <!--Column3-->
+            <div class="footer-pad">
+              <h4>Coming Soon</h4>
+              <ul class="list-unstyled">
+                <a href="{% url 'blog:blog_index' %}"><li>Blog</li></a>
+                <li>FAQs</li>
+                                
+              </ul>
+            </div>
+          </div>
+          <!--column 4-->
+          <div class="col-md-3">
+            <h4>Follow Us</h4>
+            <ul class="social-network social-circle">
+              <li><a href="https://www.facebook.com/Bloomer-Fit-100462422525632" class="icoFacebook" title="Facebook"><i
+                    class="fa fa-facebook"></i></a></li>
+              <li><a href="https://www.instagram.com/bloomerfit/" class="icoInstagram" title="Instagram"><i
+                    class="fa fa-instagram"></i></a></li>
+              <li><a href="https://twitter.com/#" class="icoTwitter" title="Twitter"><i
+                    class="fa fa-twitter"></i></a></li>
+              <li><a href="https://api.whatsapp.com/send?phone=2347031066645" class="icoWhatsapp" title="Whatsapp"><i
+                    class="fa fa-whatsapp"></i></a></li>
+            </ul>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-12 copy">
+            <p class="text-center">&copy; Copyright 2022 - bloomerfit. All rights reserved.</p>
+          </div>
+        </div>
+
+
+      </div>
+    </div>
+  </footer>
+    
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+     
+    
+</body>
+</html>

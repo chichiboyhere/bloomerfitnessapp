@@ -1,0 +1,71 @@
+{% extends "blog/base.html" %}
+{% load static %}
+{% block body %}
+
+<div class="col-md-8 offset-md-2">
+    <img  src="{% static post.image %}" alt="image" width="60%">
+    <h1>{{ post.title }}</h1>
+    <small>
+        {{ post.created_on.date }} |&nbsp;
+        Categories:&nbsp;
+        {% for category in post.categories.all %}
+        <a href="{% url 'blog:blog_category' category.name %}">
+            {{ category.name }}
+        </a>&nbsp;
+        {% endfor %}
+    </small>
+    <p>{{ post.body| safe | linebreaks }}</p>
+    <h3>Leave a comment:</h3>
+    <form action="/blog/{{ post.pk }}/" method="post">
+        {% csrf_token %}
+        <div class="form-group">
+            {{ form.author }}
+        </div>
+        <div class="form-group">
+            {{ form.body }}
+        </div>
+        <button type="submit" class="btn btn-primary">Submit</button>
+    </form>
+    {% if num_of_comments == 1 %}
+    <h3> {{num_of_comments}} Comment</h3>
+    {% elif num_of_comments > 1 %}
+    <h3> {{num_of_comments}} Comments</h3>
+    {% endif %}
+    {% for comment in comments %}
+    <div style="border: 1.5px dashed green; border-radius: 5px; position: relative; padding: 15px">
+        <img src="{% static 'images/profile_avatar.png' %}" style="width: 65px; float: right;">
+    <p>
+        On {{comment.created_on.date }}&nbsp;
+        <b>{{ comment.author }}</b> wrote:
+    </p>
+    <p>{{ comment.body }}</p>
+    </div>
+    <hr>
+    {% empty %}
+    <h3>No Comments</h3>
+    {% endfor %}
+    
+</div>
+
+
+<h2>Related stories:</h2>  
+<div class="row">
+    {% for category in post.categories.all %}
+        {% for obj in object_list %}
+          {% if category in obj.categories.all  %}
+             
+             <div class="col-md-4">
+                 <img  src="{% static obj.image %}" alt="image here" width="80%">
+                 <h3><a href="{% url 'blog:blog_detail' obj.pk %}">{{ obj.title }}</a></h3>
+                 <small>
+                     {{ obj.created_on.date }}     
+                 </small>
+                 <p>{{ obj.body| safe | slice:":200" }}...</p>
+             </div>
+            
+          {% endif %}
+        {% endfor %}
+    {% endfor %}
+</div>
+
+{% endblock %}

@@ -1,0 +1,297 @@
+{% extends "user/base.html" %}
+{% load static %}
+{% load crispy_forms_tags %}
+{% block title %} bloomerfit | Member page {% endblock %}
+
+{% block body %}
+
+<style>
+  @media (max-width: 450px) {
+  .my_video {
+    width: 100vw;
+  }
+}
+</style>
+
+<div class="container">
+    
+	
+  <h1>Welcome, {{request.user.first_name|capfirst}}.</h1>
+  <div class="row">
+    <p>
+      Like every other journey or set goals in life, your journey towards a healthy lifestyle will not be easy. In the end it all comes down to how badly you want it. It goes without saying that there would be sacrifices. You'd have to let go of some unhealthy lifestyle, while adopting healthy ones. The problem a lot of us have with imbibing a healthier life routine is the lack of motivation. Why do I have to go through the stringent, regimented lifestyle? Who am I trying to impress with it? What do I stand to gain from such sacrifices? Are the gains worth the pleasures I have to sacrifice? These and lots more are the questions we often have to comfront as we make the decision for a healthier lifestyle.
+    </p>
+    <p>
+      To some of us, these questions have easy answers? Consider an athelete versus a sedentary person(e.g someone like a secretary, banker, ... whose job does not require a lot moving around.) While the athlete knows he has no choice than to be fit through eating healthy meals and working out on a daily basis, while steering clear of hard drugs and other harmful substances in order to attain optimal performance in his career, the everyday Joe with a sedentary lifestyle does not have a similar motvation. So then where does our non-athelete get his motivation to adopt a healthy lifestyle? 
+    </p>
+    <p>
+      Well to put it succinctly, he/she has a prolonged life in good health as a motivation. If you want to eliminate or at least reduce a visit to the hospital on health reasons then you have no choice than to adopt a healthy lifestyle. It's that simple. More so, if you desire being more physically attractive than the majority of the population, adopting a healthy lifestyle should come as second nature.
+    </p>
+    <p>
+      The good news on this fitness journey is that, as with most things in life, it can soon become second nature. And your body starts craving healthier options than harmful ones after you have initially subjected yourself to the initial rigors that come with adopting a healthy lifestyle.
+    </p>
+    <p>
+      Here are some healthy life choices that you would have to make to become fit and fine:
+      <div>
+        <ul>
+          <li>Healthy Food and fruits eaten in moderation and on time (breafast at 8am, lunch and  super to follow at intervals of 4/5 hours)</li>
+          <li>As much as possible, your last meal of the day should come at least 2 hours before bed time. This allows the meal to have left your stomach before going to bed, thus avoiding weight gain in the abdominal region.</li>
+          <li>Choose fish over meat. If you must take meat choose lean meat or offals over fatty or red meat</li>
+          <li>Choose veggies and natural organic fruits over canned drinks and fruit juice. The former have helpful digestive fibre(roughage) that has been removed from the latter.</li>
+          <li>Regular exercise(10 minutes of daily rigorous exercises like Burpee, running and other cardios or 30 minutes of less rigorous exercises like walking done on a daily basis)</li>
+          <li>Moderate intake of alcohol &ndash; 14 units(that is 140 ml) of pure alcohol per week(this is equivalent to taking 4 bottles of beer with a percentage of about 6-7% of alcohol in it within a week.) And you have to be of legal age to even contemplate drinking alcohol.</li>
+          <li>Practice complete abstinence from smoking (there's no such thing as smoking in moderation)</li>
+          <li>Steer clear of drugs that have not been recommended by your doctor</li>
+          <li>Sleep 6 to 8 hours daily, particularly at night. Ever heard of 'beauty sleeep'?(winks)</li>
+        </ul>
+        If you keep to these rules, even to 80% adherence, for three months, you will notice a remarkable difference in your fitness level and overall body physique.
+      </div>
+    </p>
+    <p>
+       In the menu bar above we have links to some healthy meal suggestions for you. These meals are drawn from different geographical regions of the world. The list is not exhaustive though. We shall add more to it with time.Below we have selected some workout videos specially for you.
+    </p>
+
+  </div>
+    
+
+    {% if gender == "MALE" %}
+
+        <!--Cases 1 & 2: High to very high WHR, high to very high BMI-->
+		    {% if whr > 0.9 and bmi >= 30 or whr > 0.9 and bmi > 24 and bmi < 30 %}
+			  
+              <div class="row">
+                  <div class="col-md-6">
+                    <iframe style="width:100%; margin: 10px; height:345px" frameborder="0" src="https://www.youtube.com/embed/wS4OsJ4yzx4"></iframe>
+                    <p style="text-align: center;">Burpee</p>
+                  </div>
+                  <div class="col-md-6" style="padding: 5px">
+                    Burpee is an excellent cardio exercise. It is quite helpful in keeping the weight down. Ten burpees at a time repeated several reps in a day is the equivalence of running for miles.   
+                  </div>
+              </div>
+              <div class="row">
+                  <div class="col-md-6">
+                    <iframe style="width:100%; margin: 10px; height:345px" frameborder="0" src="https://www.youtube.com/embed/1BZM2Vre5oc"></iframe>
+                    <p style="text-align: center;">A combination of interval cardios</p>
+                  </div>
+                  <div class="col-md-6" style="padding: 10px">
+                  <p> A combination of daily cardio exercises lasting 10 minutes can work wonders on your body. In these video you     will  anumber of cardios done at 20 seconds stretch interspersed with a 10-second resting period. </p>
+                  <p>These heart-friendly, fat-shedding, inexpensive home exercises include:</p>  
+                  <ul>
+                    <li>Jump rope(using a slipping rope) </li>
+                    <li>Jumping Jacks</li>
+                    <li>High Knees</li>
+                  </ul>
+                      ... and more.
+                  </div>
+              </div>
+              <div class="row">
+                <p>
+                  Now to keep track of your weight loss we advice that your weight lies anywhere between {{weightShouldBe_one}} kg and {{weightShouldBe_two}} kg for your height({{height}} m). But then you can choose what your preferred weight goal is. Then by implementing the suggested workout and meal plans you can reach the goal in the shortest time possible. It is safe to say that with strict adherence to proper diet and workout, you stand the chance of losing 0.5kg(1.1 pounds) to 1.0kg(2.2 pounds) on a weekly bases.
+                </p>
+                <p>
+                  Please click on the link: <a href="{% url 'user:weight_tracker' %}">form</a> and plug in your desired weight to find out how long it would take you to achieve your goal under proper adherence to the workout and meal plan regimen.
+                </p>
+              </div>
+                
+            <!--Cases 3: High WHR, good BMI-->
+            {% elif whr > 0.9  and bmi >= 19 and bmi <= 24 %}
+            <div class="row">
+                 <div class="col-md-6">
+                  <iframe style="width:100%; margin: 10px; height:345px" frameborder="0" src="https://www.youtube.com/embed/QvbpeETBoGg"></iframe>
+                     <p style="text-align: center;">Cristiano Ronaldo workout session</p>
+                 </div>
+                 <div class="col-md-6" style="padding: 20px">
+                  <p>
+                    You can reduce that little extra fat-layer, 'love handle', as it is fondly called, around your waist. The exercises here, portrayed by the fitness guru himself, Cristiano Ronaldo, are proven to do the magic. Pay more attention to the ones directed at the abdomen. What's more they are readily accessible. All you need is a plank. 
+                  </p>
+                  <p>
+                    You can see more abdomen-targeted workouts <a href="https://www.healthline.com/health/what-causes-love-handles">here.</a>
+                  </p>   
+                 </div>
+             </div>
+             <div class="row">
+                 <div class="col-md-6">
+                  <iframe style="width:100%; margin: 10px; height:345px" frameborder="0" src="https://www.youtube.com/embed/e6eKim_yqnY"></iframe>
+                  <p style="text-align: center;">Weight-Lifting</p>
+                 </div>
+                 <div class="col-md-6" style="padding: 20px">
+                  <p>
+                    Weight-lifting is an effective way of ridding the whole body of excess body fat, the <em>love handle</em> not an exception. This video shows Dwayne Johnson(a.k.a The Rock) as he grinds in the gym to assume the great physique many of us admire, while some are in awe of, and all of us, undeniably respect. You may not intend to assume the awesome heights of fitness of The Rock, but you can  at least get to a respectable point; much to the admiration of your friends and, most importanly, to your own overall wellness.
+                  </p>
+                  </div>
+             </div>
+             <!--For underweight people-->
+             {% elif whr <= 0.9 and bmi < 19 %}
+             <div class="row">
+                  <div class="col-md-6">
+                    <iframe style="width:100%; margin: 10px; height:345px" frameborder="0" src="https://www.youtube.com/embed/e6eKim_yqnY"></iframe>
+                      <p style="text-align: center;">Weight-Lifting with The Rock</p>
+                  </div>
+                  <div class="col-md-6" style="padding: 20px">
+                      <p>
+                        Weight-lifting is a sure way of gaining weight &dash; clean healthy weight. Through weight-lifting you can gain muscles and improve your physique, stamina and strength. You can either set up a moderate gym at home, involving dumb-bells, or if you can afford it, use a standard gym.
+                      </p>
+                      <p>
+                        This video shows Dwayne Johnson(a.k.a The Rock) as he grinds in the gym to assume the great physique many of us admire, while some are in awe of, and all of us, undeniably respect. You may not intend to assume the awesome heights of fitness of The Rock, but you can  at least get to a respectable point; much to the admiration of your friends and, most importanly, to your own overall wellness.
+                      </p>
+                  </div>
+             </div>
+            <!--Other cases-->
+            {% else %}
+            <div class="row">
+               <div class="col-md-6">
+                <iframe style="width:100%; margin: 10px; height:345px" frameborder="0" src="https://www.youtube.com/embed/hf00_b2sRdc"></iframe>
+                    <p style="text-align: center;">Hollow Body Hold</p>
+
+                  </div>
+                  <div class="col-md-6" style="padding: 20px">
+                   The hollow body is a great exercise for people who want to have a trim waist line. When done properly and regularly, this exercise has the capacity to tone up the muscles of the abdomen.  
+                  </div>
+              </div>
+            {% endif %}
+            <div class="row" style="padding: 20px;">
+                Now for extra motivation, let's turn to Ethan Suplee and his uncommon weight loss feat. Watch how he discusses his body transformation journey. Finally, we check out the one and only The Rock in the Beast Mode video. 
+            </div>
+            
+              <div class="row">
+                <div class="col-md-6">
+                  <iframe style="width:100%; margin: 10px; height:345px" frameborder="0" src="https://www.youtube.com/embed/O7SLwIDyYrk"></iframe>
+                     <p style="text-align: center;">Ethan Suplee</p>
+                </div>
+                <div class="col-md-6">
+                  <iframe style="width:100%; margin: 10px; height:345px" frameborder="0" src="https://www.youtube.com/embed/24fdcMw0Bj0"></iframe>
+                   <p style="text-align: center;">Dwayne Johnson(Beast Mode)</p>
+                </div>
+              </div>
+            
+    {% endif %}
+    {% if gender == "FEMALE" %}
+
+        <!--Cases 1 & 2: High to very high WHR, high to very high BMI-->
+		    {% if whr >= 0.85 and bmi >= 30 or whr >= 0.85 and bmi > 24 and bmi < 30 %}
+              <div class="row">
+                  <div class="col-md-6">
+                    <iframe style="width:100%; margin: 10px; height:345px" frameborder="0" src="https://www.youtube.com/embed/dZgVxmf6jkA"></iframe>
+                    <p style="text-align: center;">Burpee</p>
+                  </div>
+                  <div class="col-md-6" style="padding: 20px">
+                    Burpee is an excellent cardio exercise. It is quite helpful in keeping the weight down. Ten burpees at a time repeated 
+                    several reps in a day is the equivalence of running a marathon.   
+                  </div>
+              </div>
+              <div class="row">
+                <div class="col-md-6">
+                  <iframe style="width:100%; margin: 10px; height:345px" frameborder="0" src="https://www.youtube.com/embed/3t1MxfzdX5Q"></iframe>
+                  <p style="text-align: center;">Jump Rope(Skipping)</p>
+                </div>
+                <div class="col-md-6" style="padding: 20px">
+                <p>
+                  Jump rope exercise or skipping is an excellent cardio exercise, proven to help you shed weight and tone-up your muscles as quickly as possible. Just 10-minutes of skipping &dash; done at say 20s straight and interspersed with a 10-second rest&dash; every morning for 30 days will bring noticeable weight loss; and what's more? It will improve your lung capacity and a lot more. 
+                </p>
+                <p>These heart-friendly, fat-shedding, inexpensive home exercises include:</p>  
+                
+                </div>
+            </div>
+            <div class="row">
+              <p>
+                Now to keep track of your weight loss we advice that your weight lies anywhere between {{weightShouldBe_one}} kg and {{weightShouldBe_two}} kg for your height({{height}} m). But then you can choose what your preferred weight goal is. Then by implementing the suggested workout and meal plans you can reach the goal in the shortest time possible.
+              </p>
+              <p>
+                Please enter your preferred weight in the form below and find out how long it would take you to achieve it under proper adherence to the workout and meal plan regimen.
+              </p>
+            </div>
+            <div>
+              <a href="{% url 'user:weight_tracker' %}">Form</a>
+            </div>
+            <!--Case 3: Very high WHR, very high BMI-->
+            {% elif whr <= 0.85 and whr >= 0.7  and bmi < 30 and bmi > 24 %}
+            <div class="row">
+              <div class="col-md-6">
+                <iframe style="width:100%; margin: 10px; height:345px" frameborder="0" src="https://www.youtube.com/embed/n-H5EpKcP60"></iframe>
+                <p style="text-align: center;">Trim down the abdomen</p>
+
+              </div>
+              <div class="col-md-6" style="padding: 20px">
+               You can reduce that little extra fat-layer, 'love handle', as it is fondly called, around your waist. The exercises here are proven to do the magic. What's more they are readily accessible. All you need is a plank.  You can see these <a href="https://www.healthline.com/health/what-causes-love-handles">videos</a> to see how that works. 
+              </div>
+            </div>
+             <!--For underweight people-->
+             {% elif whr <= 0.9 and whr > 0.85 and bmi < 19 %}
+             <div class="row">
+               <p>
+                 Being underweight comes with far-less health risks than being overweight or obese. That said, being underweight may not be viewed by many as physically attractive. Unless you are(or plan to be) a run-way model, being underweight is not much desireble. Some of the issues that come with being underweight include lack of stamina, being intimidated or bullied by some, trivial as this might sound. 
+               </p>
+               <p>
+                 Let's consider two models who worked up their weight from being lean to filling out nicely through a combination of work out and diets. Enter, wioletta Pawluk and Viviwinkler. These awesome ladies made up their minds to acquire some clean weight and toned up their muscles. It's no mean work though, but if you desire the same transformation as they did, then you're welcome aboard. 
+               </p>
+             </div>
+             <div class="row"> 
+              <div class="col-md-6">
+                  <img src = "{% static 'user/images/wioletta_progress.jpg' %}" alt = "wioletta_progress" style="width:100%; margin: 5px">
+                  <p style = "text-align: center">Wioletta Progress.</p>
+               </div> 
+               <div class="col-md-6">        
+                    <img src = "{% static 'user/images/viviwinkler_progression.jpg' %}" alt = "viviwinkler_progression" style="width:100%; margin: 5px">
+                    <p style = "text-align: center">Viviwinkler Progress</p>
+               </div>
+            </div>
+             <div class="row">
+                      <div class="col-md-6">
+                        <iframe style="width:100%; margin: 10px; height:345px" frameborder="0" src="https://www.youtube.com/embed/tlaNIJIjbCM"></iframe>  
+                      </div>
+                      <div class="col-md-6">
+                        <iframe style="width:100%; margin: 10px; height:345px" frameborder="0" src="https://www.youtube.com/embed/h9N2F8ejnEY"></iframe> 
+                      </div>
+                      
+              </div>
+              <div class="row" style="padding: 20px">
+                      <p>
+                        Weight-lifting is a sure way of gaining weight &dash; clean healthy weight. Through weight-lifting you can gain muscles and improve your physique, stamina and strength. You can either set up a moderate gym at home, particularly involving dumb-bells or, if you can afford it, register at a standard gym.
+                      </p>
+                      <p>
+                        The videos here shows fitness model, artist wioletta Pawluk working out. Wioletta has a good blend of home workouts and working out at the gym for that ultimate fit and beautiful physique she possesses.
+                      </p>         
+              </div>
+              <div class="row">
+                <div class="col-md-6">
+                  <iframe style="width:100%; margin: 10px; height:345px" frameborder="0" src="https://www.youtube.com/embed/RpqL3eaS1Gs"></iframe>
+                  <p style="text-align: center;">Viviwinkler working out</p>
+  
+                </div>
+                <div class="col-md-6" style="padding: 20px">
+                  <p>
+                    If you can afford to, spending some time at the gym is a very productive way of bulking up good, healthy body weight. Viviwinkler likes working out at the gym in the company of her personal trainers and the result of all her hardwork is evident for all to see.
+                  </p> 
+                </div>
+              </div>             
+            <!--Default cases-->
+            {% else %}
+            <div class="row">
+                  <div class="col-md-6">
+                    <iframe style="width:100%; margin: 10px; height:345px" frameborder="0" src="https://www.youtube.com/embed/n-H5EpKcP60"></iframe>
+                    <p style="text-align: center;">Hollow Body Hold</p>
+
+                  </div>
+                  <div class="col-md-6" style="padding: 20px">
+                   The hollow body is a great exercise for people who want to have a trim waist line. When done properly and regularly, this exercise has the capacity to tone up the muscles of the abdomen   
+                  </div>
+              </div>
+            {% endif %}
+          <div class="row" style="padding: 20px;">
+              Now for extra motivation, let's turn to Erica Lugo and her uncommon weight loss feat. In these videos she puts us through her workout regimen. You will definitely find these helpful. 
+          </div>
+          <div class="row">
+              <div class="col-md-6">
+                <iframe style="width:100%; margin: 10px; height:345px" frameborder="0" src="https://www.youtube.com/embed/sXXVQzUz_N0"></iframe>
+              </div>
+              <div class="col-md-6">
+                <iframe style="width:100%; margin: 10px; height:345px" frameborder="0" src="https://www.youtube.com/embed/1fgWq8vs7O0"></iframe>
+              </div>
+              <p style="text-align: center;">Erica Lugo workout videos</p>
+            </div>
+
+    {% endif %}
+    <p>Please update your <a href="{% url 'user:profile' %}">profile</a>. It'd help us help you even better on your bloomerfit journey</p>    
+</div>
+    
+{% endblock %}

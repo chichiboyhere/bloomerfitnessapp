@@ -1,0 +1,23 @@
+{% extends 'user/base.html' %}
+{% load crispy_forms_tags %}
+{% block title %}bloomerfit | Log In{% endblock %}
+
+{% block body %}
+<div class="container py-5 text-center">
+  {% if messages %}
+        {% for message in messages %}
+        <h3 style="color:blue" {% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</h3>
+        {% endfor %}
+  {% endif %}
+  <h1 style="color:blue">Login</h1>
+    <form method="POST">
+      {% csrf_token %}
+      {{ form|crispy }}
+      <br><button type="submit">Login</button>
+    </form>
+  <p class="text-center">Don't have an account? <a href="{% url 'user:signup' %}">Create an account</a>.</p>
+</div>
+{% endblock %}
+
+
+      
