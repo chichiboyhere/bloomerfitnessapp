@@ -1,0 +1,44 @@
+{% extends "user/base.html" %}
+
+{% block title %}
+    Metric Unit Converter
+{% endblock %}
+
+{% block body %}
+    <style>
+        
+        h1{
+            border-radius: 15px;
+            padding: 10px;
+            margin: 5px;
+            border: 2px solid whitesmoke;
+            background-color: lightslategrey;
+            color:white;
+            text-align: center;
+        }
+        .navibutton{
+            border:2px solid white;
+            padding: 10px;
+            color:white;
+            background-color: cornflowerblue;
+            margin: 10px;
+            border-radius: 6px;
+        }
+        .navibutton:hover{
+            padding: 10px;
+            color:white;
+            background-color: rgb(181, 204, 245);
+        }
+    </style>
+<div class="container">
+        <h1>Metric Converter Menu</h1>
+        <div>
+            <center>
+                <a href="{% url 'user:metric_converter' %}"><button class="navibutton">Weight in Pounds(Lbs) to Kilogram</button></a>
+                <a href="{% url 'user:metric_converter_two' %}"><button class="navibutton">Height in Feet and Inches to Meter</button></a>
+            </center>
+        </div>
+        <div style="text-align: center;"><a href="{% url 'user:signup' %}">Back to sign up page</a> </div>   
+        <br><br><br><br> 
+</div>
+{% endblock %}

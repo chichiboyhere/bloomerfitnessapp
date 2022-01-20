@@ -1,0 +1,105 @@
+{% extends "user/base.html" %}
+{% load static %}
+{% block title %}fitness meter {% endblock%}
+
+{% block body %}
+    <style>
+      td{
+        margin: 5px;  
+      }
+      #mydiv {
+        background-image: url("{% static 'user/images/workoutFemales.jpg' %}");
+        background-repeat: no-repeat;
+        background-size: cover;
+        background-position: center;
+        opacity: 0.5;
+      }
+       
+    </style>
+    
+    <div id="mydiv" class="container-fluid" style="padding: 80px;" >
+      <div class="container" style="margin: 0 auto;">
+        <h1 style="color: blue;font-size: 58px; margin:auto; font-weight: bold; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; text-align: center;">Fitness Meter</h1>
+      </div> 
+    </div>
+    <br><br><br>
+    <div class="container">
+      
+        <form method="post" action="{% url 'user:fitnessMeter' %}" style="border: 1px solid blue; background-color: skyblue; padding: 15px;">
+          {% csrf_token %}
+          <table>
+            <tr>
+              <td>{{ form.name.label_tag }}</td>
+              <td>{{ form.name }}</td>
+            </tr>
+            <tr>
+              <td>{{ form.weight.label_tag }}</td>
+              <td>{{ form.weight }}</td>
+              <td>{{ form.weightunit }}</td>
+            </tr>
+            <tr> 
+              <td>{{ form.height.label_tag }}(in cm)</td> 
+              <td>{{ form.height}} </td>       
+            </tr>
+            <tr>
+              <td>{{ form.waist.label_tag }}</td>
+              <td>{{ form.waist }}</td>
+            </tr>
+            <tr>
+              <td>{{ form.hips.label_tag }}</td>
+              <td>{{ form.hips }}</td>
+            </tr>
+            <tr>
+              <td>{{ form.gender.label_tag }}</td>
+              <td>{{ form.gender }}</td>
+            </tr>  
+          </table><br>
+        &nbsp;<button class="btn btn-primary" type="submit">Submit</button>
+        <div>To get your height in meter or centimeters click <a href="{% url 'user:metric_converter_two' %}" style="color:green">metric converter</a></div>
+      </form>
+      
+    </div>
+    <br><br>
+    <div class="container" style="border-style: outset; padding-top: 20px; padding: 15px;">
+      <p>The fitness meter, as I call it, is actually a combination of your <strong>body mass index(BMI)</strong> and your
+        <strong>waist-hip ratio(WHR).</strong> The essence of the BMI and WHR is to decide, using a few parameters which I shall unveil
+        shortly, the level of fat and its distribution in the body. Excess body fat, particularly upper body fat has been medically proven to be the leading
+        cause of such medical issues as hypertension, heart attack, obesity and so on. Therefore it is important to keep the body fat moderate
+        or low in order to stay healthy. A combination of lifestyle-related factors can help one in achieving the desired body fat level, and thus,
+        maintain a healthy lifestyle.<b>Regular exercise, balanced diets eaten in adequate quantities and in good time, proper rest, avoidance
+        of harmful habits like smoking or excessive drinking, steering clear of drug abuse are some of the ways to maintain both mental
+        and physical health.</b></p>
+        <p>Using a combination of <b>BMI</b> and <b>WHR</b> one can test their fitness level via body fat level. Here's how that works. First
+        of all what really is <i>BMI</i> and <i>WHR</i>? Well BMI(short for: body mass index) is the the ratio of a person's mass(in kilogram) to
+        the square of their height(in meter-squared). <b>If the BMI result is less than 19, it means the person is underweight. A BMI between 19
+        and 24(inclusive) indicates a healthy weight and then a BMI running from 25 to 29 indicates overweight, while a BMI from 30 and above is
+        considered obese and thus poses a threat to one's health</b>.</p>
+        <p>Of course the BMI has it's lapses. For instance a person's BMI result might be high, indicating signs of high body fat, when actually
+           the person has a moderate to low body fat. A good example is that of body builders who have well-developed and toned muscles. Now muscles
+         have a greater density than fat, meaning it is possible to have a lean person with a high weight and as such high BMI. For this reason, we
+         need a second parameter to clarify things. This is where the WHR(waist-hip ratio) comes into play. The WHR is simply the ratio
+         of the waist versus the hips, i.e divide the measurement of the circumference of your waist by the circumference of your hips.
+         Research as shown that <b>the WHR for women not pregnant should not exceed 0.85, values higher are not good for health. The ideal WHR for women is 0.7.
+         For men an ideal WHR is 0.9</b>. So as you can see, women generally have a lower WHR than men due to their generally bigger hip bones, necessary for the
+         support of foetus during pregnancy.</p>
+         <p> So there you have it, with a good combination of your BMI and WHR, it could be decided whether or not you are in a good physical shape.
+         So let's measure our BMI-WHR values, shall we? Get on the scale and get your mass in kilogram. Also get your height measurement, from
+         your head to your toes, preferably without your shoes on. Next get a tape rule and measure your waist round. For best results ensure you
+         are in a standing position with your tape-rule going round the part of your belly that tappers the most, just right above your navel. Also
+         make sure you are relaxed, without sucking in your belly and pushing it out. Make sure the rule is horizontal, not sagging down, but flat
+         against your skin. Do the same for the hips, ensuring your clothing is right next to your skin and
+         the measurement is around your buttocks, where it's widest as shown in the pictures below.</p>
+        
+        <div class = "row">
+            <div class = "col-md-6"><img src = "{% static 'user/images/waist_measure.jpg' %}" alt = "waist_measurement" style="width:100%;margin:7px" title="picture courtesy of medicalnewstoday.com"></div>
+            <div class = "col-md-6"><img src = "{% static 'user/images/hip_measurement.jpg' %}" alt = "hips_measurement" style="width:100%;margin:7px" title="picture courtesy of verywellfit.com"></div>
+        </div>
+        
+        <div>
+            <p>Now armed with your mass, your height(in cm), your waist measurement and hips measurement(both in inches or
+            both in centimeters, not mixed), you can try out your BMI and WHR and see just how physically fit you are.</p>
+            <p> Plug these values into the form at the <a href="#top">top</a> of the page and see the result.</p>
+        </div>
+    </div>
+    <br>     
+{% endblock %}

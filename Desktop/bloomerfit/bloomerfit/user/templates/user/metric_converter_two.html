@@ -1,0 +1,26 @@
+{% extends "user/base.html" %}
+{% load crispy_forms_tags %}
+ {% block title %}
+ Converter
+ {% endblock %}
+ {% block body %}
+ <div class="container">
+    <form method="POST" action="{% url 'user:metric_converter_two' %}" style="border: 1px solid blue; background-color: skyblue; padding: 15px;">
+        {% csrf_token %}
+        <div class="form-group">
+            <label for="height">Height in Feet and Inches:</label>
+           <p>{{ height_form.height }}&nbsp;&nbsp; {{ height_form.height2 }} </p> 
+        </div>
+        <div><button class="btn btn-success" type="submit">Convert to Meter</button></div>
+    </form>
+       
+    
+       {% if height_in_meter %}
+        Height = {{ height_in_meter }} m (or {{height_in_cm}} cm)
+       {% endif %}
+    <div style="text-align: center;"><a href="{% url 'user:fitnessMeter' %}">Back to Fitness Meter page</a> </div>  
+    <div style="text-align: center;"><a href="{% url 'user:m_converter' %}">Back to Metric Converter Menu page</a> </div>
+    <div style="text-align: center;"><a href="{% url 'user:signup' %}">Back to sign up page</a> </div>
+ </div>
+
+{% endblock %}
